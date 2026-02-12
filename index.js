@@ -13,8 +13,10 @@ const server = http.createServer(app);
 const io = socketio(server, {
     cors: {
         origin: process.env.FRONTEND_URL || "*",
-        methods: ["GET", "POST"]
-    }
+        methods: ["GET", "POST"],
+        credentials: true
+    },
+    transports: ['websocket', 'polling']
 });
 
 connectDB();
